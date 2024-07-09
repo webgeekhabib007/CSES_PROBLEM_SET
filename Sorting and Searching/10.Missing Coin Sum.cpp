@@ -8,17 +8,14 @@ int main(int argc,char** argv){
     ll n;cin>>n;
     vector<ll>v(n);
     for(auto &x : v)cin>>x;
-    multiset<ll> st;
+    sort(v.begin(),v.end());
+	ll curr=1;
     for(auto x: v){
-        auto it = st.upper_bound(x);
-        if(it == st.end()){
-            st.insert(x);
-        }else{
-            st.erase(it);
-            st.insert(x);
-        }
+        if(curr >= x){
+            curr+= x;
+        }else break;
     }
-    cout << st.size() << nl;
+    cout << curr << nl;
     return 0;
 }
 
